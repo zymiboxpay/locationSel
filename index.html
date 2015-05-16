@@ -19,14 +19,19 @@
 	<button class="target">target</button>
 	<script>
 	$(function(){
-		$(".target").locationSel({
+		$locationSel = $(".target").locationSel({
 			tabs : ["市","区"], // defaults
 			cities : ["深圳市", "广州市"],
 			districts : {
 							"深圳市": ["南山区","罗湖区","福田区"],
 							"广州市": ["越秀区","海珠区","白云区"]
 			}
-		})
+		});
+
+		//监听选择完成事件 allSelected
+		$locationSel.on("allSelected", function(event, result){
+			console.log(">>> selected result: ", result);
+		});
 	});
 	</script>
 </body>
