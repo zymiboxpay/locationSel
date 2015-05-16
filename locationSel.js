@@ -1,7 +1,7 @@
 /*
 	require jQuery
 
-	usage: $().locationSel({
+	usage: $('.selector').locationSel({
 		tabs : ["市","区"], // defaults
 		cities : ["深圳市", "广州市"],
 		districts : {
@@ -29,7 +29,7 @@
 			$el.data(key, instance);
 		});
 
-	}
+	};
 
 
 	LocationSel.prototype = {
@@ -133,8 +133,8 @@
 				var $el = $(el);
 				if (index < me.opts.level - 1) {
 					$el.addClass("has_next");
-				};
-			})
+				}
+			});
 
 		},
 
@@ -149,7 +149,7 @@
 				left: me.$el.offset().left,
 				top:me.$el.offset().top + me.$el.outerHeight(),
 				display: "none"
-			})
+			});
 			
 		},
 
@@ -252,6 +252,9 @@
 			me.$el
 				.text(selectedVal)
 				.data("selectedVal",selectedVal);
+
+			me.$el.trigger("allSelected", me._result);
+
 		},
 
 		_getTabsHead: function(){
@@ -275,18 +278,17 @@
 			var value = [];
 			$.each(obj, function(key, val){
 				value.push(val);
-			})
+			});
 			return value;
 		}
 
 
-	}
+	};
 
 
 	$.fn.locationSel.defaults = {
 		activeTab : 1,
 		level : 2,
 		defaultLocation : {"省" : "广东省"}
-
-	}
+	};
 })(jQuery);
