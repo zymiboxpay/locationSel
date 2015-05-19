@@ -141,15 +141,18 @@
 
 		setLocation: function(){
 			var me = this;
-			me.$el.after(me._locationSel);
+			if (!me.$el.siblings(".wl_location_sel").length) {
+				me.$el.after(me._locationSel);
+				
+			}
 
 			//设定 tabs 列表位置
 			me._locationSel.css({
-				position: "absolute",
 				left: me.$el.offset().left,
-				top:me.$el.offset().top + me.$el.outerHeight(),
-				display: "none"
+				top: Number(me.$el.offset().top) + Number(me.$el.outerHeight()) - $("body").scrollTop()
 			});
+
+			// console.log(">>> top: ", Number(me.$el.offset().top) + Number(me.$el.outerHeight()) - $("body").scrollTop());
 			
 		},
 
@@ -219,6 +222,11 @@
 				else {
 					me._endSel();
 				}
+			});
+
+
+			$(document).on("scroll", function(){
+				me.setLocation();
 			});
 		},
 
