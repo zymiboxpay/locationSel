@@ -78,6 +78,8 @@
 
 			me._locationSel = $(html);
 
+			me.$el.after(me._locationSel);
+
 			me.setTabDefault();
 
 		},
@@ -141,11 +143,7 @@
 
 		setLocation: function(){
 			var me = this;
-			if (!me.$el.siblings(".wl_location_sel").length) {
-				me.$el.after(me._locationSel);
-				
-			}
-
+			
 			//设定 tabs 列表位置
 			me._locationSel.css({
 				left: me.$el.offset().left,
