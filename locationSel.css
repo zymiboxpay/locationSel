@@ -443,7 +443,8 @@ th {
 	======================================================================== */
 
 .wl_location_sel {
-	
+  position: fixed;
+	display: none;
 }
 
 .wl_location_sel_head {
